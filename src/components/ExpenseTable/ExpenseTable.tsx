@@ -1,4 +1,5 @@
-import React, { useState, ChangeEvent, FormEvent } from "react";
+import React, { useState } from "react";
+import type { ChangeEvent, FormEvent } from "react";
 import { useExpenseStore } from "../../store/useExpenseStore";
 import type { Expense, Category } from "../../store/useExpenseStore";
 import { clsx } from "clsx";

@@ -1,6 +1,12 @@
 /****************************
  * ExpenseRow Component
  ***************************/
+
+import React from "react";
+import type { ChangeEvent } from "react";
+import { useExpenseStore } from "../../store/useExpenseStore";
+import type { Expense } from "../../store/useExpenseStore";
+
 interface ExpenseRowProps {
   expense: Expense;
 }

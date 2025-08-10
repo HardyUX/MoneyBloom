@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import { useExpenseStore } from "../store/useExpenseStore";
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell, } from "recharts";
 
 // Helper to format cents as €
 const euro = (amt: number) => (amt / 100).toLocaleString("de-DE", { style: "currency", currency: "EUR" });

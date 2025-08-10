@@ -1,5 +1,10 @@
 import React, { useState } from "react";
-import { Dialog } from "@headlessui/react";
+import {
+  Dialog,
+  DialogBackdrop,
+  DialogPanel,
+  DialogTitle,
+} from "@headlessui/react";
 import { useExpenseStore } from "../store/useExpenseStore";
 import type { Category } from "../store/useExpenseStore";
 import { v4 as uuid } from "uuid";
@@ -20,7 +25,7 @@ const CategoryManagerModal: React.FC = () => {
   // Form handlers
   const handleOpen = (cat?: Category) => {
     if (cat) {
-      setEdit({ ...cat });
+      setEdit({ name: cat.name, color: cat.color, linkedDescriptions: [...cat.linkedDescriptions] });
       setEditingId(cat.id);
     } else {
       setEdit(emptyCategory());
@@ -71,12 +76,11 @@ const CategoryManagerModal: React.FC = () => {
         Categories
       </button>
 
-      <Dialog open={isOpen} onClose={() => setIsOpen(false)} className="fixed inset-0 z-50 flex items-center justify-center">
-        <Dialog.Overlay className="fixed inset-0 bg-black bg-opacity-40" />
-        <div className="relative bg-white dark:bg-gray-800 p-6 rounded-xl max-w-md w-full mx-auto shadow-xl z-10">
-          <Dialog.Title className="text-lg font-semibold mb-2">
-            {editingId ? "Edit Category" : "Add Category"}
-          </Dialog.Title>
+<Dialog open={isOpen} onClose={() => setIsOpen(false)} className="relative z-50">
+  <DialogBackdrop className="fixed inset-0 bg-black/40" />
+  <div className="fixed inset-0 flex items-center justify-center p-4">
+    <DialogPanel className="w-full max-w-md rounded-xl bg-white dark:bg-gray-800 p-6 shadow-xl">
+      <DialogTitle className="text-lg font-semibold mb-2">Create Spending Category</DialogTitle>
           <div className="space-y-4">
             <div>
               <label className="block text-sm font-medium">Name</label>
@@ -159,6 +163,7 @@ const CategoryManagerModal: React.FC = () => {
               >Save</button>
             </div>
           </div>
+          </DialogPanel>
         </div>
       </Dialog>
 

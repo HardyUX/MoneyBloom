@@ -1,9 +1,10 @@
 /****************************
  * AddExpenseForm Component
  ***************************/
-import React, { useState, ChangeEvent, FormEvent } from "react";
+import React, { useState } from "react";
+import type { ChangeEvent, FormEvent } from "react";
 import { useExpenseStore } from "../../store/useExpenseStore";
-import type { Expense } from "../store/useExpenseStore";
+import type { Expense } from "../../store/useExpenseStore";
 
 export const AddExpenseForm: React.FC = () => {
   const { addExpense, categories, guessCategory } = useExpenseStore();
